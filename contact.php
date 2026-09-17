@@ -8,11 +8,24 @@ require __DIR__ . "/vendor/autoload.php";
 
 
 /* =========================
-   CHARGEMENT DU FICHIER .ENV
+   CHARGEMENT DES VARIABLES
+   D'ENVIRONNEMENT
 ========================= */
 
+/*
+   En local :
+   PHPDotenv charge le fichier .env.
+
+   Sur Render :
+   le fichier .env n'existe pas,
+   donc safeLoad() évite une erreur.
+
+   Render fournit directement
+   RESEND_API_KEY.
+*/
+
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 
 /* =========================
@@ -97,7 +110,13 @@ if (!empty($erreurs)) {
 
     foreach ($erreurs as $erreur) {
 
-        echo "<p>" . htmlspecialchars($erreur) . "</p>";
+        echo "<p>" .
+            htmlspecialchars(
+                $erreur,
+                ENT_QUOTES,
+                "UTF-8"
+            ) .
+            "</p>";
 
     }
 
@@ -143,19 +162,47 @@ $messageSecurise = nl2br(
 
 
 /* =========================
+   RÉCUPÉRATION DE LA CLÉ API
+========================= */
+
+/*
+   Sur ton Mac :
+   la clé vient du fichier .env.
+
+   Sur Render :
+   la clé vient des variables
+   d'environnement configurées
+   dans le tableau de bord.
+*/
+
+$apiKey = $_ENV["RESEND_API_KEY"]
+    ?? getenv("RESEND_API_KEY");
+
+
+/* =========================
+   VÉRIFICATION DE LA CLÉ
+========================= */
+
+if (!$apiKey) {
+
+    exit(
+        "Configuration du service d'envoi manquante."
+    );
+
+}
+
+
+/* =========================
    ENVOI AVEC RESEND
 ========================= */
 
 try {
 
     /*
-       Récupération de la clé API
-       depuis le fichier .env
+       Création du client Resend
     */
 
-    $resend = Resend::client(
-        $_ENV["RESEND_API_KEY"]
-    );
+    $resend = Resend::client($apiKey);
 
 
     /*
@@ -165,10 +212,12 @@ try {
     $resend->emails->send([
 
         /*
-           Adresse d'expédition de test Resend
+           Adresse d'expédition
+           de test Resend
         */
 
-        "from" => "Portfolio Benjamin <onboarding@resend.dev>",
+        "from" =>
+            "Portfolio Benjamin <onboarding@resend.dev>",
 
 
         /*
@@ -182,10 +231,11 @@ try {
 
 
         /*
-           Si tu cliques sur Répondre
-           dans Gmail, la réponse ira
-           à la personne ayant rempli
-           ton formulaire.
+           Quand tu cliqueras sur
+           Répondre dans Gmail,
+           la réponse sera envoyée
+           à la personne qui a rempli
+           le formulaire.
         */
 
         "reply_to" => $email,
@@ -195,11 +245,12 @@ try {
            Sujet de l'email
         */
 
-        "subject" => "Portfolio - " . $sujet,
+        "subject" =>
+            "Portfolio - " . $sujet,
 
 
         /*
-           Contenu de l'email
+           Contenu HTML de l'email
         */
 
         "html" => "
