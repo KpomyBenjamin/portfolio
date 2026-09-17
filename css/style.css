@@ -10,12 +10,23 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+
     font-family: Arial, sans-serif;
     background-color: #0f172a;
     color: #f8fafc;
+}
+
+img {
+    max-width: 100%;
 }
 
 
@@ -52,16 +63,13 @@ nav ul a {
     text-decoration: none;
 }
 
-nav ul a:hover {
-    color: #38bdf8;
-}
-
+nav ul a:hover,
 nav ul a.active {
     color: #38bdf8;
 }
 
-/* Bouton hamburger :
-   caché par défaut sur ordinateur */
+
+/* Bouton hamburger */
 
 .menu-toggle {
     display: none;
@@ -136,30 +144,31 @@ nav ul a.active {
 }
 
 
-/* Boutons */
+/* Boutons accueil */
 
 .accueil-boutons {
     display: flex;
-
     flex-wrap: wrap;
 
     gap: 15px;
 }
 
 .accueil-boutons a {
+    display: inline-block;
+
     padding: 12px 22px;
 
     background-color: #38bdf8;
-
     color: #0f172a;
 
     text-decoration: none;
-
     font-weight: bold;
 
     border-radius: 6px;
 
-    transition: 0.3s;
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .accueil-boutons a:hover {
@@ -176,9 +185,7 @@ nav ul a.active {
     min-width: 350px;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
@@ -192,6 +199,8 @@ nav ul a.active {
 
     border: 4px solid #38bdf8;
 }
+
+
 /* =========================
    À PROPOS
 ========================= */
@@ -211,6 +220,7 @@ nav ul a.active {
 
 .apropos-contenu h2 {
     font-size: 42px;
+
     margin-bottom: 30px;
 }
 
@@ -244,19 +254,21 @@ nav ul a.active {
 .competences-grille {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 25px;
 }
 
 .competence {
+    min-width: 0;
+
     background-color: #1e293b;
 
     padding: 30px;
 
     border-radius: 10px;
 
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 .competence:hover {
@@ -278,6 +290,44 @@ nav ul a.active {
 }
 
 
+/* Tags des compétences */
+
+.competence-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.competence-tags span {
+    max-width: 100%;
+
+    background-color: #0f172a;
+    color: #38bdf8;
+
+    padding: 8px 12px;
+
+    border: 1px solid #334155;
+    border-radius: 6px;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.competence-tags span:hover {
+    border-color: #38bdf8;
+
+    transform: translateY(-2px);
+}
+
+
 /* =========================
    PARCOURS / CV
 ========================= */
@@ -295,6 +345,7 @@ nav ul a.active {
 }
 
 .parcours-item {
+    width: 100%;
     max-width: 700px;
 
     padding: 25px;
@@ -304,7 +355,6 @@ nav ul a.active {
     background-color: #1e293b;
 
     border-left: 4px solid #38bdf8;
-
     border-radius: 8px;
 }
 
@@ -324,26 +374,35 @@ nav ul a.active {
     line-height: 1.6;
 }
 
+
+/* Bouton CV */
+
 .bouton-cv {
     display: inline-block;
+
+    width: auto;
 
     margin-top: 20px;
 
     padding: 12px 22px;
 
     background-color: #38bdf8;
-
     color: #0f172a;
 
     text-decoration: none;
-
     font-weight: bold;
 
     border-radius: 6px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .bouton-cv:hover {
     background-color: #7dd3fc;
+
+    transform: translateY(-2px);
 }
 
 
@@ -366,12 +425,14 @@ nav ul a.active {
 .projets-grille {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 25px;
 }
 
 .projet {
+    min-width: 0;
+
     background-color: #1e293b;
 
     border-radius: 10px;
@@ -379,83 +440,8 @@ nav ul a.active {
     overflow: hidden;
 }
 
-.projet-image {
-    height: 220px;
 
-    background-color: #334155;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
-
-.projet-contenu {
-    padding: 25px;
-}
-
-.projet-contenu h3 {
-    font-size: 24px;
-
-    margin-bottom: 15px;
-}
-
-.projet-contenu > p {
-    color: #cbd5e1;
-
-    line-height: 1.6;
-
-    margin-bottom: 20px;
-}
-
-.technologies {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-bottom: 25px;
-}
-
-.technologies span {
-    background-color: #0f172a;
-
-    color: #38bdf8;
-
-    padding: 7px 12px;
-
-    border-radius: 5px;
-
-    font-size: 14px;
-}
-
-.projet-liens {
-    display: flex;
-
-    gap: 15px;
-}
-
-.projet-liens a {
-    color: #38bdf8;
-
-    text-decoration: none;
-
-    font-weight: bold;
-}
-
-.projet-liens a:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   IMAGES DES PROJETS
-========================= */
-
-/* =========================
-   IMAGES DES PROJETS
-========================= */
+/* Images des projets */
 
 .projet-image {
     width: 100%;
@@ -465,6 +451,8 @@ nav ul a.active {
 
     border: 2px solid #ffffff;
     border-radius: 16px;
+
+    background-color: #334155;
 
     box-sizing: border-box;
 }
@@ -483,13 +471,93 @@ nav ul a.active {
     transition: transform 0.3s ease;
 }
 
-
-
-/* Petit effet au survol */
-
 .projet:hover .projet-image img {
     transform: scale(1.03);
 }
+
+
+/* Contenu projet */
+
+.projet-contenu {
+    padding: 25px;
+}
+
+.projet-contenu h3 {
+    font-size: 24px;
+
+    margin-bottom: 10px;
+}
+
+.projet-date {
+    display: inline-block;
+
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    color: #38bdf8;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.projet-contenu > p {
+    color: #cbd5e1;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+
+/* Technologies */
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.technologies span {
+    max-width: 100%;
+
+    background-color: #0f172a;
+    color: #38bdf8;
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Liens projets */
+
+.projet-liens {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+.projet-liens a {
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.projet-liens a:hover {
+    text-decoration: underline;
+}
+
+
 /* =========================
    CONTACT
 ========================= */
@@ -510,15 +578,17 @@ nav ul a.active {
     color: #cbd5e1;
 
     margin-bottom: 40px;
+
+    line-height: 1.6;
 }
 
 .contact-contenu {
+    width: 100%;
     max-width: 700px;
 }
 
 .contact-formulaire {
     display: flex;
-
     flex-direction: column;
 
     gap: 20px;
@@ -526,7 +596,6 @@ nav ul a.active {
 
 .champ {
     display: flex;
-
     flex-direction: column;
 
     gap: 8px;
@@ -539,19 +608,17 @@ nav ul a.active {
 .champ input,
 .champ textarea {
     width: 100%;
+    max-width: 100%;
 
     padding: 14px;
 
     background-color: #1e293b;
-
     color: #f8fafc;
 
     border: 1px solid #334155;
-
     border-radius: 6px;
 
     font-family: inherit;
-
     font-size: 16px;
 }
 
@@ -562,28 +629,57 @@ nav ul a.active {
     border-color: #38bdf8;
 }
 
+
+/* Bouton formulaire */
+
 .contact-formulaire button {
     width: fit-content;
+    max-width: 100%;
 
     padding: 14px 25px;
 
     background-color: #38bdf8;
-
     color: #0f172a;
 
     border: none;
-
     border-radius: 6px;
 
     font-size: 16px;
-
     font-weight: bold;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
 }
 
 .contact-formulaire button:hover {
     background-color: #7dd3fc;
+
+    transform: translateY(-2px);
+}
+
+
+/* Messages formulaire */
+
+#message-formulaire {
+    margin-top: 10px;
+
+    font-weight: bold;
+}
+
+.erreur {
+    color: #f87171;
+
+    font-size: 14px;
+
+    min-height: 18px;
+}
+
+.champ input.invalide,
+.champ textarea.invalide {
+    border-color: #f87171;
 }
 
 
@@ -597,8 +693,9 @@ footer {
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
+
+    gap: 20px;
 
     border-top: 1px solid #334155;
 
@@ -607,6 +704,7 @@ footer {
 
 .footer-liens {
     display: flex;
+    flex-wrap: wrap;
 
     gap: 20px;
 }
@@ -621,12 +719,14 @@ footer {
     text-decoration: underline;
 }
 
+
 /* =========================
    ANIMATIONS AU SCROLL
 ========================= */
 
 .animation-scroll {
     opacity: 0;
+
     transform: translateY(30px);
 
     transition:
@@ -636,87 +736,10 @@ footer {
 
 .animation-scroll.visible {
     opacity: 1;
+
     transform: translateY(0);
 }
 
-/* ==========================================
-   RESPONSIVE - TABLETTE ET TÉLÉPHONE
-   900px ET MOINS
-========================================== */
-
-@media (max-width: 900px) {
-    .accueil-contenu {
-    flex-direction: column-reverse;
-
-    text-align: center;
-
-    gap: 40px;
-}
-
-.accueil-texte {
-    max-width: 700px;
-}
-
-.accueil-boutons {
-    justify-content: center;
-}
-
-.accueil-visuel {
-    width: 250px;
-    min-width: 250px;
-}
-
-.photo-profil {
-    width: 250px;
-    height: 250px;
-}
-
-    /* Navigation */
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .menu {
-        display: none;
-
-        position: absolute;
-
-        top: 80px;
-        left: 0;
-
-        width: 100%;
-
-        background-color: #0f172a;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        padding: 30px 0;
-
-        gap: 25px;
-    }
-
-    /* JavaScript ajoute la classe active */
-    .menu.active {
-        display: flex;
-    }
-
-
-    /* Compétences */
-
-    .competences-grille {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    /* Projets */
-
-    .projets-grille {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
 
 /* =========================
    CONFIRMATION CONTACT
@@ -792,54 +815,300 @@ footer {
 }
 
 
-/* ==========================================
-   RESPONSIVE - TÉLÉPHONE
-   600px ET MOINS
-========================================== */
+/* ==================================================
+   RESPONSIVE - TABLETTE
+   900px ET MOINS
+================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
+
+    /* Navigation */
+
+    header {
+        padding: 20px 6%;
+
+        position: relative;
+
+        z-index: 1000;
+    }
+
+    nav > a {
+        font-size: 22px;
+    }
+
+    .menu-toggle {
+        display: block;
+
+        position: relative;
+
+        z-index: 1001;
+    }
+
+    .menu {
+        display: none;
+
+        position: absolute;
+
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+
+        background-color: #0f172a;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        padding: 30px 0;
+
+        gap: 25px;
+
+        z-index: 999;
+
+        border-bottom: 1px solid #334155;
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
 
     /* Accueil */
 
+    #accueil {
+        min-height: auto;
 
-    #accueil h1 {
-        font-size: 42px;
+        padding: 60px 6% 90px;
     }
 
-    #accueil h2 {
-        font-size: 24px;
+    .accueil-contenu {
+        flex-direction: column-reverse;
+
+        text-align: center;
+
+        gap: 40px;
     }
+
+    .accueil-texte {
+        width: 100%;
+
+        max-width: 700px;
+    }
+
+    .accueil-texte h1 {
+        font-size: 50px;
+    }
+
+    .accueil-boutons {
+        justify-content: center;
+    }
+
+    .accueil-visuel {
+        width: 250px;
+        min-width: 250px;
+    }
+
+    .photo-profil {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    /* Sections */
+
+    #apropos,
+    #competences,
+    #parcours,
+    #projets,
+    #contact {
+        min-height: auto;
+
+        padding: 80px 6%;
+    }
+
+
+    /* Compétences */
+
+    .competences-grille {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+
+    /* Projets */
+
+    .projets-grille {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 20px;
+    }
+
+    .projet-image {
+        height: 210px;
+    }
+
+
+    /* Parcours */
+
+    .parcours-item {
+        max-width: 100%;
+    }
+
+
+    /* Contact */
+
+    .contact-contenu {
+        max-width: 100%;
+    }
+}
+
+
+/* ==================================================
+   PETITE TABLETTE
+   700px ET MOINS
+================================================== */
+
+@media (max-width: 700px) {
+
+    /* Une seule colonne pour les projets */
+
+    .projets-grille {
+        grid-template-columns: 1fr;
+    }
+
+    .projet {
+        width: 100%;
+        max-width: 600px;
+
+        margin: 0 auto;
+    }
+
+    .projet-image {
+        height: 280px;
+    }
+}
+
+
+/* ==================================================
+   TÉLÉPHONE
+   600px ET MOINS
+================================================== */
+
+@media (max-width: 600px) {
+
+    /* Navigation */
+
+    header {
+        padding: 18px 5%;
+    }
+
+    nav > a {
+        font-size: 20px;
+    }
+
+    .menu {
+        top: 65px;
+    }
+
+
+    /* Accueil */
 
     #accueil {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+        padding: 40px 5% 70px;
+    }
 
-.accueil-texte h1 {
-    font-size: 42px;
-}
+    .accueil-contenu {
+        gap: 30px;
+    }
 
-.accueil-texte h2 {
-    font-size: 24px;
-}
+    .accueil-visuel {
+        width: 190px;
+        min-width: 190px;
+    }
 
-.accueil-visuel {
-    width: 200px;
-    min-width: 200px;
-}
+    .photo-profil {
+        width: 190px;
+        height: 190px;
+    }
 
-.photo-profil {
-    width: 200px;
-    height: 200px;
-}
-    /* Titres des sections */
+    .accueil-texte .intro {
+        font-size: 16px;
+    }
 
-    #apropos h2,
+    .accueil-texte h1 {
+        font-size: 38px;
+
+        line-height: 1.1;
+    }
+
+    .accueil-texte h2 {
+        font-size: 22px;
+
+        line-height: 1.3;
+    }
+
+    .accueil-texte .description {
+        font-size: 16px;
+    }
+
+
+    /* =========================
+       BOUTONS ACCUEIL MOBILE
+       Ils restent compacts
+    ========================= */
+
+    .accueil-boutons {
+        width: 100%;
+
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 12px;
+    }
+
+    .accueil-boutons a {
+        width: auto;
+
+        padding: 11px 18px;
+
+        text-align: center;
+    }
+
+
+    /* Sections */
+
+    #apropos,
+    #competences,
+    #parcours,
+    #projets,
+    #contact {
+        padding: 65px 5%;
+    }
+
+
+    /* Titres */
+
+    .apropos-contenu h2,
     #competences > h2,
     #parcours > h2,
     #projets > h2,
     #contact > h2 {
-        font-size: 34px;
+        font-size: 32px;
+
+        margin-bottom: 35px;
+    }
+
+
+    /* À propos */
+
+    .apropos-contenu p {
+        font-size: 16px;
+
+        line-height: 1.7;
     }
 
 
@@ -849,11 +1118,107 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .competence {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 25px;
+    }
+
+    .competence h3 {
+        font-size: 20px;
+    }
+
+
+    /* Parcours */
+
+    .parcours-item {
+        width: 100%;
+        max-width: 100%;
+
+        padding: 22px;
+
+        margin-bottom: 20px;
+    }
+
+    .parcours-item h3 {
+        font-size: 20px;
+    }
+
+    /*
+       IMPORTANT :
+       le bouton CV ne prend plus 100%
+       de la largeur.
+    */
+
+    .bouton-cv {
+        width: auto;
+
+        display: inline-block;
+
+        padding: 12px 22px;
+    }
+
 
     /* Projets */
 
     .projets-grille {
         grid-template-columns: 1fr;
+
+        width: 100%;
+    }
+
+    .projet {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .projet-image {
+        height: 230px;
+
+        border-width: 2px;
+        border-radius: 14px;
+    }
+
+    .projet-image img {
+        border-radius: 10px;
+    }
+
+    .projet-contenu {
+        padding: 22px;
+    }
+
+    .projet-contenu h3 {
+        font-size: 21px;
+    }
+
+    .projet-liens {
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+
+    /* Contact */
+
+    .contact-intro {
+        line-height: 1.6;
+    }
+
+    .champ input,
+    .champ textarea {
+        font-size: 16px;
+    }
+
+    /*
+       IMPORTANT :
+       le bouton Envoyer reste compact.
+    */
+
+    .contact-formulaire button {
+        width: fit-content;
+
+        padding: 14px 25px;
     }
 
 
@@ -864,30 +1229,76 @@ footer {
 
         gap: 20px;
 
+        padding: 30px 5%;
+
         text-align: center;
+    }
+
+    .footer-liens {
+        justify-content: center;
+    }
+
+
+    /* Confirmation */
+
+    .confirmation {
+        padding: 30px 5%;
+    }
+
+    .confirmation-contenu {
+        padding: 35px 20px;
+    }
+
+    .confirmation-contenu h1 {
+        font-size: 32px;
     }
 }
 
-/*Message formulaire */
 
-#message-formulaire {
-    margin-top: 10px;
-    font-weight: bold;
-}
+/* ==================================================
+   PETITS TÉLÉPHONES
+   400px ET MOINS
+================================================== */
 
-/*Les erreur*/
-.erreur {
-    color: #f87171;
-    font-size: 14px;
-    min-height: 18px;
-}
+@media (max-width: 400px) {
 
-.champ input.invalide,
-.champ textarea.invalide {
-    border-color: #f87171;
-}
+    .accueil-texte h1 {
+        font-size: 34px;
+    }
 
-#message-formulaire {
-    margin-top: 10px;
-    font-weight: bold;
+    .accueil-texte h2 {
+        font-size: 20px;
+    }
+
+    .accueil-visuel {
+        width: 170px;
+        min-width: 170px;
+    }
+
+    .photo-profil {
+        width: 170px;
+        height: 170px;
+    }
+
+    .accueil-boutons a {
+        padding: 10px 14px;
+
+        font-size: 14px;
+    }
+
+    .projet-image {
+        height: 190px;
+    }
+
+    .technologies,
+    .competence-tags {
+        gap: 7px;
+    }
+
+    .technologies span,
+    .competence-tags span {
+        font-size: 12px;
+
+        padding: 6px 9px;
+    }
 }
