@@ -56,6 +56,25 @@ nav ul a:hover {
     color: #38bdf8;
 }
 
+nav ul a.active {
+    color: #38bdf8;
+}
+
+/* Bouton hamburger :
+   caché par défaut sur ordinateur */
+
+.menu-toggle {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: #f8fafc;
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
 
 /* =========================
    ACCUEIL
@@ -63,58 +82,123 @@ nav ul a:hover {
 
 #accueil {
     min-height: 85vh;
+    padding: 0 8%;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 0 8%;
+    align-items: center;
 }
 
-#accueil h1 {
-    font-size: 60px;
-    margin: 10px 0;
+.accueil-contenu {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 60px;
 }
 
-#accueil h2 {
-    font-size: 30px;
+
+/* Texte */
+
+.accueil-texte {
+    max-width: 650px;
+}
+
+.accueil-texte .intro {
     color: #38bdf8;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+.accueil-texte h1 {
+    font-size: 60px;
+
+    margin-bottom: 10px;
+}
+
+.accueil-texte h2 {
+    font-size: 30px;
+
+    color: #38bdf8;
+
     margin-bottom: 20px;
 }
 
-#accueil p {
-    max-width: 600px;
-    line-height: 1.7;
+.accueil-texte .description {
     color: #cbd5e1;
-    margin-bottom: 20px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
 }
 
-#accueil a {
-    display: inline-block;
-    width: fit-content;
 
+/* Boutons */
+
+.accueil-boutons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+}
+
+.accueil-boutons a {
     padding: 12px 22px;
-    margin: 5px 10px 5px 0;
 
     background-color: #38bdf8;
+
     color: #0f172a;
 
     text-decoration: none;
+
     font-weight: bold;
 
     border-radius: 6px;
+
+    transition: 0.3s;
 }
 
-#accueil a:hover {
+.accueil-boutons a:hover {
     background-color: #7dd3fc;
+
+    transform: translateY(-2px);
 }
 
+
+/* Photo */
+
+.accueil-visuel {
+    width: 350px;
+    min-width: 350px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.photo-profil {
+    width: 350px;
+    height: 350px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #38bdf8;
+}
 /* =========================
    À PROPOS
 ========================= */
 
 #apropos {
     min-height: 100vh;
+
     padding: 100px 8%;
 
     display: flex;
@@ -125,133 +209,74 @@ nav ul a:hover {
     max-width: 800px;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-/* Tablette */
-@media (max-width: 900px) {
-
-    .competences-grille {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-/* Téléphone */
-@media (max-width: 600px) {
-
-    .competences-grille {
-        grid-template-columns: 1fr;
-    }
-
-    #accueil h1 {
-        font-size: 42px;
-    }
-
-    #accueil h2 {
-        font-size: 24px;
-    }
-
-}
-
-/* =========================
-   PROJETS
-========================= */
-
-#projets {
-    min-height: 100vh;
-    padding: 100px 8%;
-}
-
-#projets > h2 {
+.apropos-contenu h2 {
     font-size: 42px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
-.projets-grille {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-}
+.apropos-contenu p {
+    font-size: 18px;
 
-.projet {
-    background-color: #1e293b;
-    border-radius: 10px;
-    overflow: hidden;
-}
+    line-height: 1.8;
 
-.projet-image {
-    height: 220px;
-
-    background-color: #334155;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.projet-contenu {
-    padding: 25px;
-}
-
-.projet-contenu h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.projet-contenu > p {
     color: #cbd5e1;
-    line-height: 1.6;
+
     margin-bottom: 20px;
 }
 
-.technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
 
-    margin-bottom: 25px;
+/* =========================
+   COMPÉTENCES
+========================= */
+
+#competences {
+    min-height: 100vh;
+
+    padding: 100px 8%;
 }
 
-.technologies span {
-    background-color: #0f172a;
+#competences > h2 {
+    font-size: 42px;
+
+    margin-bottom: 50px;
+}
+
+.competences-grille {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.competence {
+    background-color: #1e293b;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    transition: transform 0.3s;
+}
+
+.competence:hover {
+    transform: translateY(-5px);
+}
+
+.competence h3 {
     color: #38bdf8;
 
-    padding: 7px 12px;
+    font-size: 22px;
 
-    border-radius: 5px;
-    font-size: 14px;
+    margin-bottom: 15px;
 }
 
-.projet-liens {
-    display: flex;
-    gap: 15px;
+.competence p {
+    color: #cbd5e1;
+
+    line-height: 1.6;
 }
 
-.projet-liens a {
-    color: #38bdf8;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.projet-liens a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 600px) {
-
-    /* ton CSS précédent reste ici */
-
-    .projets-grille {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-.projets-grille {
-    grid-template-columns: repeat(2, 1fr);
-}
 
 /* =========================
    PARCOURS / CV
@@ -259,20 +284,25 @@ nav ul a:hover {
 
 #parcours {
     min-height: 100vh;
+
     padding: 100px 8%;
 }
 
 #parcours > h2 {
     font-size: 42px;
+
     margin-bottom: 50px;
 }
 
 .parcours-item {
     max-width: 700px;
+
     padding: 25px;
+
     margin-bottom: 25px;
 
     background-color: #1e293b;
+
     border-left: 4px solid #38bdf8;
 
     border-radius: 8px;
@@ -280,6 +310,7 @@ nav ul a:hover {
 
 .parcours-item span {
     color: #38bdf8;
+
     font-weight: bold;
 }
 
@@ -289,6 +320,7 @@ nav ul a:hover {
 
 .parcours-item p {
     color: #cbd5e1;
+
     line-height: 1.6;
 }
 
@@ -296,16 +328,127 @@ nav ul a:hover {
     display: inline-block;
 
     margin-top: 20px;
+
     padding: 12px 22px;
 
     background-color: #38bdf8;
+
     color: #0f172a;
 
     text-decoration: none;
+
     font-weight: bold;
 
     border-radius: 6px;
 }
+
+.bouton-cv:hover {
+    background-color: #7dd3fc;
+}
+
+
+/* =========================
+   PROJETS
+========================= */
+
+#projets {
+    min-height: 100vh;
+
+    padding: 100px 8%;
+}
+
+#projets > h2 {
+    font-size: 42px;
+
+    margin-bottom: 50px;
+}
+
+.projets-grille {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.projet {
+    background-color: #1e293b;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.projet-image {
+    height: 220px;
+
+    background-color: #334155;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.projet-contenu {
+    padding: 25px;
+}
+
+.projet-contenu h3 {
+    font-size: 24px;
+
+    margin-bottom: 15px;
+}
+
+.projet-contenu > p {
+    color: #cbd5e1;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.technologies {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 25px;
+}
+
+.technologies span {
+    background-color: #0f172a;
+
+    color: #38bdf8;
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
+.projet-liens {
+    display: flex;
+
+    gap: 15px;
+}
+
+.projet-liens a {
+    color: #38bdf8;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.projet-liens a:hover {
+    text-decoration: underline;
+}
+
 
 /* =========================
    CONTACT
@@ -313,16 +456,19 @@ nav ul a:hover {
 
 #contact {
     min-height: 100vh;
+
     padding: 100px 8%;
 }
 
 #contact > h2 {
     font-size: 42px;
+
     margin-bottom: 15px;
 }
 
 .contact-intro {
     color: #cbd5e1;
+
     margin-bottom: 40px;
 }
 
@@ -332,13 +478,17 @@ nav ul a:hover {
 
 .contact-formulaire {
     display: flex;
+
     flex-direction: column;
+
     gap: 20px;
 }
 
 .champ {
     display: flex;
+
     flex-direction: column;
+
     gap: 8px;
 }
 
@@ -349,19 +499,28 @@ nav ul a:hover {
 .champ input,
 .champ textarea {
     width: 100%;
+
     padding: 14px;
 
     background-color: #1e293b;
+
     color: #f8fafc;
 
     border: 1px solid #334155;
+
     border-radius: 6px;
 
     font-family: inherit;
+
     font-size: 16px;
 }
 
+.champ input:focus,
+.champ textarea:focus {
+    outline: none;
 
+    border-color: #38bdf8;
+}
 
 .contact-formulaire button {
     width: fit-content;
@@ -369,12 +528,15 @@ nav ul a:hover {
     padding: 14px 25px;
 
     background-color: #38bdf8;
+
     color: #0f172a;
 
     border: none;
+
     border-radius: 6px;
 
     font-size: 16px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -384,6 +546,7 @@ nav ul a:hover {
     background-color: #7dd3fc;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
@@ -392,7 +555,9 @@ footer {
     padding: 30px 8%;
 
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     border-top: 1px solid #334155;
@@ -402,14 +567,287 @@ footer {
 
 .footer-liens {
     display: flex;
+
     gap: 20px;
 }
 
 .footer-liens a {
     color: #38bdf8;
+
     text-decoration: none;
 }
 
 .footer-liens a:hover {
     text-decoration: underline;
+}
+
+/* =========================
+   ANIMATIONS AU SCROLL
+========================= */
+
+.animation-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.animation-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================
+   RESPONSIVE - TABLETTE ET TÉLÉPHONE
+   900px ET MOINS
+========================================== */
+
+@media (max-width: 900px) {
+    .accueil-contenu {
+    flex-direction: column-reverse;
+
+    text-align: center;
+
+    gap: 40px;
+}
+
+.accueil-texte {
+    max-width: 700px;
+}
+
+.accueil-boutons {
+    justify-content: center;
+}
+
+.accueil-visuel {
+    width: 250px;
+    min-width: 250px;
+}
+
+.photo-profil {
+    width: 250px;
+    height: 250px;
+}
+
+    /* Navigation */
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        display: none;
+
+        position: absolute;
+
+        top: 80px;
+        left: 0;
+
+        width: 100%;
+
+        background-color: #0f172a;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        padding: 30px 0;
+
+        gap: 25px;
+    }
+
+    /* JavaScript ajoute la classe active */
+    .menu.active {
+        display: flex;
+    }
+
+
+    /* Compétences */
+
+    .competences-grille {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* Projets */
+
+    .projets-grille {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================
+   CONFIRMATION CONTACT
+========================= */
+
+.confirmation {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 8%;
+}
+
+.confirmation-contenu {
+    width: 100%;
+    max-width: 600px;
+
+    background-color: #1e293b;
+
+    padding: 50px;
+
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.confirmation-contenu h1 {
+    color: #38bdf8;
+
+    font-size: 42px;
+
+    margin-bottom: 25px;
+}
+
+.confirmation-contenu p {
+    color: #cbd5e1;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
+}
+
+.confirmation-contenu strong {
+    color: #f8fafc;
+}
+
+.confirmation-contenu a {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 12px 22px;
+
+    background-color: #38bdf8;
+    color: #0f172a;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 6px;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.confirmation-contenu a:hover {
+    background-color: #7dd3fc;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   RESPONSIVE - TÉLÉPHONE
+   600px ET MOINS
+========================================== */
+
+@media (max-width: 600px) {
+
+    /* Accueil */
+
+
+    #accueil h1 {
+        font-size: 42px;
+    }
+
+    #accueil h2 {
+        font-size: 24px;
+    }
+
+    #accueil {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.accueil-texte h1 {
+    font-size: 42px;
+}
+
+.accueil-texte h2 {
+    font-size: 24px;
+}
+
+.accueil-visuel {
+    width: 200px;
+    min-width: 200px;
+}
+
+.photo-profil {
+    width: 200px;
+    height: 200px;
+}
+    /* Titres des sections */
+
+    #apropos h2,
+    #competences > h2,
+    #parcours > h2,
+    #projets > h2,
+    #contact > h2 {
+        font-size: 34px;
+    }
+
+
+    /* Compétences */
+
+    .competences-grille {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Projets */
+
+    .projets-grille {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Footer */
+
+    footer {
+        flex-direction: column;
+
+        gap: 20px;
+
+        text-align: center;
+    }
+}
+
+/*Message formulaire */
+
+#message-formulaire {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/*Les erreur*/
+.erreur {
+    color: #f87171;
+    font-size: 14px;
+    min-height: 18px;
+}
+
+.champ input.invalide,
+.champ textarea.invalide {
+    border-color: #f87171;
+}
+
+#message-formulaire {
+    margin-top: 10px;
+    font-weight: bold;
 }

@@ -17,34 +17,82 @@
 </body>
     <!--Navigation -->
     <header>
-        <nav>
-            <a href="#accueil">Benjamin.</a>
-            <ul>
-                <li><a href="#acceuil">Acceuil</a></li>
-                <li><a href="#apropos">apropos</a></li>
-                <li><a href="#competences">competences</a></li>
-                <li><a href="#parcours">Parcours</a></li>
-                <li><a href="#projets">projets</a></li>
-                <li><a href="#contact">contact</a></li>
+    <nav>
 
-            </ul>
-        </nav>
+        <a href="#accueil">Benjamin.</a>
+
+        <button class="menu-toggle" aria-label="Ouvrir le menu">
+            ☰
+        </button>
+
+        <ul class="menu">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<!-- Accueil -->
+<main>
      <!--Accuiel-->
      <main>
-          <section id="accueil">
-            <p>Bonjour, je suis </p>
-            <h1>Benjamin Kpomy</h1>
-            <h2>Etudiant en Bachelor 3 Cybersecurite</h2>
+          <!-- ACCUEIL -->
+<section id="accueil">
 
-            <p>
-                Passionné par la cybersecurité,les systèmes,
-                les réseaux et le développement web.
+    <div class="accueil-contenu">
+
+        <!-- Présentation -->
+        <div class="accueil-texte">
+
+            <p class="intro">Bonjour, je suis</p>
+
+            <h1>Benjamin Kpomy</h1>
+
+            <h2>Étudiant en informatique</h2>
+
+            <p class="description">
+                Passionné par le développement web, les systèmes,
+                les réseaux et la cybersécurité, je développe des projets
+                concrets afin d'améliorer continuellement mes compétences.
             </p>
 
-            <a href="#projets">Voir mes projets</a>
-            <a href="#contact">Me contacter</a>
+            <div class="accueil-boutons">
 
-          </section>
+                <a href="#projets">
+                    Voir mes projets
+                </a>
+
+                <a href="documents/cv.pdf" target="_blank">
+                    Voir mon CV
+                </a>
+
+                <a href="https://github.com/KpomyBenjamin"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Photo -->
+        <div class="accueil-visuel">
+
+            <img src="images/photo.jpg" alt="Photo de Benjamin Kpomy"class="photo-profil"
+            >
+
+        </div>
+
+    </div>
+
+</section>
 
           <!-- À propos -->
         <section id="apropos">
@@ -137,7 +185,7 @@
 
             </div>
 
-            <a class="bouton-cv" href="documents/cv.pdf" target="_blank">
+            <a class="bouton-cv" href="documents/CV_Alternance_BenjaminYnovAC.pdf" target="_blank">
                 Voir mon CV
             </a>
 
@@ -195,30 +243,34 @@
 
             <div class="contact-contenu">
 
-                <form class="contact-formulaire">
+                <form class="contact-formulaire"action="contact.php"method="POST">
 
                     <div class="champ">
                         <label for="nom">Nom</label>
-                        <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+                        <input type="text" id="nom" name="nom" placeholder="Votre nom">
+                        <small class="erreur" id="erreur-nom"></small>
                     </div>
 
                     <div class="champ">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+                        <input type="email" id="email" name="email" placeholder="votre@email.com">
+                        <small class="erreur" id="erreur-email"></small>
                     </div>
 
                     <div class="champ">
                         <label for="sujet">Sujet</label>
-                        <input type="text" id="sujet" name="sujet" placeholder="Sujet de votre message" required>
+                        <input type="text" id="sujet" name="sujet" placeholder="Sujet de votre message">
+                         <small class="erreur" id="erreur-sujet"></small>
                     </div>
 
                     <div class="champ">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Votre message..."required
-                        ></textarea>
+                        <textarea id="message" name="message" rows="6" placeholder="Votre message..."></textarea>
+                        <small class="erreur" id="erreur-message"></small>
                     </div>
 
                     <button type="submit">Envoyer le message</button>
+                    <p id="message-formulaire"></p>
 
                 </form>
 
@@ -237,7 +289,7 @@
             GitHub
         </a>
 
-        <a href="#"
+        <a href="https://www.linkedin.com/in/benjamin-kpomy/"
            target="_blank"
            rel="noopener noreferrer">
             LinkedIn
@@ -246,5 +298,4 @@
 
 </footer>
       <script src="js/main.js"></script>
-</header>
 </html>
